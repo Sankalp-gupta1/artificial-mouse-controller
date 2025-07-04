@@ -1,33 +1,32 @@
-🖱️ Artificial Mouse Controller using Hand Gestures
-Control your computer's mouse cursor using your hand gestures via a webcam. This project uses OpenCV, MediaPipe, and PyAutoGUI to detect hand movements and simulate mouse control in real-time.
+# 🖱️ Artificial Mouse Controller using Hand Gestures
 
-🚀 Features
-✅ Real-time hand tracking using webcam
+Control your computer's mouse cursor using **hand gestures** via a webcam.  
+This project utilizes **OpenCV**, **MediaPipe**, and **PyAutoGUI** to detect and translate hand movements into mouse actions in real-time.
 
-✅ Cursor movement using index finger
+---
 
-✅ Click detection via finger pinch gesture
+## 🚀 Features
 
-✅ Smooth motion using landmark filtering
+- ✅ Real-time hand tracking using webcam  
+- ✅ Cursor movement using index finger  
+- ✅ Click detection via finger pinch gesture  
+- ✅ Smooth motion using landmark filtering  
 
-🧠 Technologies Used
-Python 🐍
+---
 
-OpenCV
+## 🧠 Technologies Used
 
-MediaPipe
+- Python 🐍  
+- OpenCV  
+- MediaPipe  
+- PyAutoGUI  
 
-PyAutoGUI
+---
 
-📦 Installation
-bash
-Copy
-Edit
+## 📦 Installation
+
+```bash
 git clone https://github.com/Sankalp-gupta1/artificial-mouse-controller.git
 cd artificial-mouse-controller
 pip install -r requirements.txt
-▶️ Run the Project
-bash
-Copy
-Edit
-python artificialmouse.py
+
