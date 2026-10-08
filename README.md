@@ -1,59 +1,93 @@
-# 🖱️ Artificial Mouse Controller using Hand Gestures
+# Artificial Mouse Controller
 
-A computer vision-based project that allows you to **control your mouse cursor with your hand gestures** in real-time using your webcam.  
-This project is built using **OpenCV**, **MediaPipe**, and **PyAutoGUI**, enabling **gesture recognition** and **system-level cursor control**.
+A webcam-based computer vision prototype that maps the detected position of a finger-like foreground contour to the system mouse cursor.
 
----
+## Overview
 
-## 📖 What is this project?
+The project captures frames from the webcam, isolates a foreground contour using grayscale conversion, Gaussian blur, Otsu thresholding, and morphological filtering, then maps the contour centroid from camera coordinates to screen coordinates.
 
-In this project, your **index finger acts as a mouse pointer** and a **pinch gesture (thumb touching index finger)** simulates a mouse click.
+The current implementation focuses on **cursor movement**.
 
-It uses a webcam feed to track hand landmarks (like fingertips and joints), calculates distance between thumb and index finger, and maps your finger position to screen coordinates to move the mouse pointer.
+## Features
 
----
+- Real-time webcam capture
+- Grayscale preprocessing
+- Gaussian blur for noise reduction
+- Otsu thresholding
+- Morphological opening
+- Largest-contour detection
+- Contour centroid calculation
+- Camera-to-screen coordinate mapping
+- Mouse movement through PyAutoGUI
 
-## 🚀 Features
+## How It Works
 
-- ✅ Real-time **hand tracking** using webcam
-- ✅ **Index finger controls** mouse cursor
-- ✅ **Click action** triggered by pinch gesture
-- ✅ Smooth & natural movement with landmark filtering
-- ✅ Cross-platform (Windows tested, others with slight mods)
-- ✅ No additional hardware required — just your **webcam**
+```text
+Webcam frame
+    │
+    ▼
+Grayscale conversion
+    │
+    ▼
+Gaussian blur
+    │
+    ▼
+Otsu thresholding
+    │
+    ▼
+Morphological cleanup
+    │
+    ▼
+Largest valid contour
+    │
+    ▼
+Contour centroid
+    │
+    ▼
+Map to screen coordinates
+    │
+    ▼
+PyAutoGUI cursor movement
+```
 
----
+## Tech Stack
 
-## 🧠 How it works
+- Python
+- OpenCV
+- NumPy
+- PyAutoGUI
 
-1. **Webcam** captures your video.
-2. **MediaPipe** detects your hand and identifies landmarks.
-3. **Index finger's coordinates** are mapped to your screen.
-4. If **thumb and index finger tips** come close (pinch), it registers a **mouse click**.
-5. **PyAutoGUI** sends the mouse movement and click signals to your OS.
+## Installation
 
----
-
-## 🧪 Technologies Used
-
-| Technology | Purpose |
-|------------|---------|
-| `OpenCV`   | Webcam video stream and image processing |
-| `MediaPipe` | Real-time hand tracking & landmark detection |
-| `PyAutoGUI` | Simulate mouse movement and click events |
-| `ctypes` / `comtypes` | System-level audio control (if extended for volume, optional) |
-
----
-
-## ⚙️ Installation
+Clone the repository:
 
 ```bash
-# Clone the repository
 git clone https://github.com/Sankalp-gupta1/artificial-mouse-controller.git
-
-# Move into the directory
 cd artificial-mouse-controller
+```
 
-# Install dependencies
-pip install -r requirements.txt
+Install dependencies:
 
+```bash
+pip install opencv-python numpy pyautogui
+```
+
+## Run
+
+```bash
+python artificialmouse.py
+```
+
+Press `q` in the OpenCV window to exit.
+
+## Notes
+
+This implementation uses contour-based tracking rather than a dedicated hand-landmark model. Results can therefore depend heavily on lighting, background contrast, camera quality, and how clearly the target finger/hand is separated from the background.
+
+The current source moves the mouse pointer; click gestures are not implemented in this version.
+
+## Author
+
+**Sankalp Gupta**
+
+GitHub: https://github.com/Sankalp-gupta1
