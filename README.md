@@ -1,66 +1,49 @@
 # Artificial Mouse Controller
 
-## Live browser demo
+A webcam-based hand/finger control project.
+
+## Live demo
 
 **https://artificial-mouse-sankalp.vercel.app/**
 
-The desktop Python version can move the operating-system mouse pointer through PyAutoGUI. Browsers intentionally cannot take control of the real OS cursor, so the hosted version uses a **safe virtual cursor** inside the demo surface.
+The live version uses MediaPipe Hands in the browser to control a **virtual cursor** inside the page.
 
-The web demo:
+## What the web demo does
 
-- uses the webcam
-- tracks the index fingertip with MediaPipe
-- maps fingertip coordinates to the virtual control surface
-- detects a thumb-index pinch
-- uses the pinch as a click gesture
-- highlights the selected demo control
-
-Processing happens in the browser.
-
----
-
-A webcam-based hand / finger controller.
-
-## Live browser demo
-
-
-## Original Python version
-
-`artificialmouse.py` uses OpenCV to detect a foreground contour and maps its position to the operating-system mouse cursor.
-
-That version is still preserved in the repository for local desktop use.
-
-## Deployed web version
-
-The `web/` version uses MediaPipe Hands in the browser.
-
-It:
-
-- reads the webcam after permission,
+- asks for webcam permission,
+- detects one hand,
 - tracks the index fingertip,
-- maps finger coordinates to a virtual desktop,
-- moves a visible browser cursor,
-- detects a thumb/index pinch,
-- uses the pinch as a click on demo targets.
-
-A normal website is not allowed to take over the real operating-system mouse cursor. The live version therefore demonstrates the interaction inside the page instead of pretending to control the OS.
+- maps the fingertip position to a virtual desktop,
+- moves a visible cursor,
+- detects a thumb-index pinch,
+- uses the pinch as a click gesture.
 
 Webcam frames stay in the browser.
 
-## Run locally
+## Why it uses a virtual cursor
 
-```bash
-cd web
-python -m http.server 8000
+Browsers are not allowed to take control of the operating-system mouse pointer.
+
+So the deployed version demonstrates the interaction safely inside the web page.
+
+The original Python version is still preserved for real desktop cursor control.
+
+## Original Python version
+
+File:
+
+```text
+artificialmouse.py
 ```
 
-Open `http://localhost:8000`.
+The original implementation uses:
 
-## Author
+- OpenCV
+- contour-based foreground tracking
+- camera-to-screen coordinate mapping
+- PyAutoGUI-style desktop cursor movement
 
-Sankalp Gupta  
-GitHub: https://github.com/Sankalp-gupta1
-
+Run the desktop version in a local environment with webcam access.
 
 ## Run the web demo locally
 
@@ -69,4 +52,38 @@ cd web
 python -m http.server 8000
 ```
 
-Open `http://localhost:8000` and allow camera access.
+Open:
+
+```text
+http://localhost:8000
+```
+
+Allow camera access.
+
+## Tech stack
+
+### Desktop
+- Python
+- OpenCV
+- desktop mouse automation
+
+### Web
+- HTML
+- CSS
+- JavaScript
+- MediaPipe Hands
+- browser camera APIs
+- Vercel
+
+## Limitations
+
+- the hosted version controls only the virtual cursor,
+- tracking quality depends on lighting and camera quality,
+- a browser cannot move the real OS cursor.
+
+## Author
+
+**Sankalp Gupta**
+
+- GitHub: https://github.com/Sankalp-gupta1
+- LinkedIn: https://www.linkedin.com/in/sankalp-gupta-rishi-8617302b0/
