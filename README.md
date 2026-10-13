@@ -2,7 +2,7 @@
 
 ## Live browser demo
 
-**https://artificial-mouse-controller.vercel.app/**
+**https://artificial-mouse-sankalp.vercel.app/**
 
 The desktop Python version can move the operating-system mouse pointer through PyAutoGUI. Browsers intentionally cannot take control of the real OS cursor, so the hosted version uses a **safe virtual cursor** inside the demo surface.
 
@@ -23,7 +23,6 @@ A webcam-based hand / finger controller.
 
 ## Live browser demo
 
-**https://artificial-mouse-sankalp.vercel.app/**
 
 ## Original Python version
 
