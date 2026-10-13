@@ -1,5 +1,24 @@
 # Artificial Mouse Controller
 
+## Live browser demo
+
+**https://artificial-mouse-controller.vercel.app/**
+
+The desktop Python version can move the operating-system mouse pointer through PyAutoGUI. Browsers intentionally cannot take control of the real OS cursor, so the hosted version uses a **safe virtual cursor** inside the demo surface.
+
+The web demo:
+
+- uses the webcam
+- tracks the index fingertip with MediaPipe
+- maps fingertip coordinates to the virtual control surface
+- detects a thumb-index pinch
+- uses the pinch as a click gesture
+- highlights the selected demo control
+
+Processing happens in the browser.
+
+---
+
 A webcam-based hand / finger controller.
 
 ## Live browser demo
@@ -42,3 +61,13 @@ Open `http://localhost:8000`.
 
 Sankalp Gupta  
 GitHub: https://github.com/Sankalp-gupta1
+
+
+## Run the web demo locally
+
+```bash
+cd web
+python -m http.server 8000
+```
+
+Open `http://localhost:8000` and allow camera access.
