@@ -1,93 +1,44 @@
 # Artificial Mouse Controller
 
-A webcam-based computer vision prototype that maps the detected position of a finger-like foreground contour to the system mouse cursor.
+A webcam-based hand / finger controller.
 
-## Overview
+## Live browser demo
 
-The project captures frames from the webcam, isolates a foreground contour using grayscale conversion, Gaussian blur, Otsu thresholding, and morphological filtering, then maps the contour centroid from camera coordinates to screen coordinates.
+**https://artificial-mouse-sankalp.vercel.app/**
 
-The current implementation focuses on **cursor movement**.
+## Original Python version
 
-## Features
+`artificialmouse.py` uses OpenCV to detect a foreground contour and maps its position to the operating-system mouse cursor.
 
-- Real-time webcam capture
-- Grayscale preprocessing
-- Gaussian blur for noise reduction
-- Otsu thresholding
-- Morphological opening
-- Largest-contour detection
-- Contour centroid calculation
-- Camera-to-screen coordinate mapping
-- Mouse movement through PyAutoGUI
+That version is still preserved in the repository for local desktop use.
 
-## How It Works
+## Deployed web version
 
-```text
-Webcam frame
-    │
-    ▼
-Grayscale conversion
-    │
-    ▼
-Gaussian blur
-    │
-    ▼
-Otsu thresholding
-    │
-    ▼
-Morphological cleanup
-    │
-    ▼
-Largest valid contour
-    │
-    ▼
-Contour centroid
-    │
-    ▼
-Map to screen coordinates
-    │
-    ▼
-PyAutoGUI cursor movement
-```
+The `web/` version uses MediaPipe Hands in the browser.
 
-## Tech Stack
+It:
 
-- Python
-- OpenCV
-- NumPy
-- PyAutoGUI
+- reads the webcam after permission,
+- tracks the index fingertip,
+- maps finger coordinates to a virtual desktop,
+- moves a visible browser cursor,
+- detects a thumb/index pinch,
+- uses the pinch as a click on demo targets.
 
-## Installation
+A normal website is not allowed to take over the real operating-system mouse cursor. The live version therefore demonstrates the interaction inside the page instead of pretending to control the OS.
 
-Clone the repository:
+Webcam frames stay in the browser.
+
+## Run locally
 
 ```bash
-git clone https://github.com/Sankalp-gupta1/artificial-mouse-controller.git
-cd artificial-mouse-controller
+cd web
+python -m http.server 8000
 ```
 
-Install dependencies:
-
-```bash
-pip install opencv-python numpy pyautogui
-```
-
-## Run
-
-```bash
-python artificialmouse.py
-```
-
-Press `q` in the OpenCV window to exit.
-
-## Notes
-
-This implementation uses contour-based tracking rather than a dedicated hand-landmark model. Results can therefore depend heavily on lighting, background contrast, camera quality, and how clearly the target finger/hand is separated from the background.
-
-The current source moves the mouse pointer; click gestures are not implemented in this version.
+Open `http://localhost:8000`.
 
 ## Author
 
-**Sankalp Gupta**
-
+Sankalp Gupta  
 GitHub: https://github.com/Sankalp-gupta1
